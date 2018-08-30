@@ -175,10 +175,30 @@ namespace Dx2Timer
         private void MoonTimer1_MinutesChanged(object sender, EventArgs e)
         {
             // 満月の 5 分前にメッセージを表示する
-            if (moonTimer1.NextFullMoon.AddMinutes(-1 * Properties.Settings.Default.BeforeFullMoon) ==
-                moonTimer1.Now)
+            //if (moonTimer1.NextFullMoon.AddMinutes(-1 * Properties.Settings.Default.BeforeFullMoon) ==
+            //    moonTimer1.Now)
+
+            // なんかおかしいなー思ったら、ミリセカンドまで比較してたのね…
+            // なんで最初は動いてたんやろか？
+            
+            // 修正: 20180828
+
+            string fmt = "yyyyMMddHHmm";
+            string before = moonTimer1.NextFullMoon.AddMinutes(
+                -1 * Properties.Settings.Default.BeforeFullMoon).ToString(fmt);
+            string snooze = moonTimer1.NextFullMoon.AddMinutes(
+                -1 * Properties.Settings.Default.SnoozeFullMoon).ToString(fmt);
+
+            if (moonTimer1.Now.ToString(fmt) == before)
             {
                 OnShowMessage(string.Format("満月の {0} 分前です", Properties.Settings.Default.BeforeFullMoon));
+            }
+
+            // スヌーズの部分
+            // 追加: 20180828
+            if (moonTimer1.Now.ToString(fmt) == snooze)
+            {
+                OnShowMessage(string.Format("満月の {0} 分前です", Properties.Settings.Default.SnoozeFullMoon));
             }
         }
 

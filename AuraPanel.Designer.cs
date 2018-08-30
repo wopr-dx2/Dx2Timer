@@ -48,23 +48,23 @@
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(131)))), ((int)(((byte)(169)))));
             this.label5.Location = new System.Drawing.Point(67, 52);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(66, 27);
             this.label5.TabIndex = 12;
             this.label5.Text = "アウラ";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // labelAuraTime
             // 
-            this.labelAuraTime.AutoSize = true;
             this.labelAuraTime.ForeColor = System.Drawing.Color.White;
             this.labelAuraTime.Location = new System.Drawing.Point(29, 47);
             this.labelAuraTime.Name = "labelAuraTime";
             this.labelAuraTime.Size = new System.Drawing.Size(94, 27);
             this.labelAuraTime.TabIndex = 7;
             this.labelAuraTime.Text = "00:48:39";
+            this.labelAuraTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // labelAuraState
             // 
@@ -116,7 +116,6 @@
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(66, 46);
@@ -176,13 +175,11 @@
             this.Name = "AuraPanel";
             this.Size = new System.Drawing.Size(150, 308);
             this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAuraState)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEnergy)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

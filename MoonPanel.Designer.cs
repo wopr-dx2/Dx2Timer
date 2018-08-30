@@ -31,28 +31,28 @@
             this.label5 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.labelState1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.labelTime1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.labelState2 = new System.Windows.Forms.Label();
-            this.labelTime2 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.labelTime2 = new System.Windows.Forms.Label();
             this.moonTimer1 = new Dx2Timer.MoonTimer();
             this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(131)))), ((int)(((byte)(169)))));
             this.label5.Location = new System.Drawing.Point(85, 52);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(48, 27);
             this.label5.TabIndex = 12;
             this.label5.Text = "月齢";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel2
             // 
@@ -75,15 +75,23 @@
             this.labelState1.TabIndex = 16;
             this.labelState1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(21, 10);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(110, 30);
+            this.pictureBox1.TabIndex = 15;
+            this.pictureBox1.TabStop = false;
+            // 
             // labelTime1
             // 
-            this.labelTime1.AutoSize = true;
             this.labelTime1.ForeColor = System.Drawing.Color.White;
             this.labelTime1.Location = new System.Drawing.Point(29, 47);
             this.labelTime1.Name = "labelTime1";
             this.labelTime1.Size = new System.Drawing.Size(94, 27);
             this.labelTime1.TabIndex = 7;
             this.labelTime1.Text = "00:48:39";
+            this.labelTime1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel3
             // 
@@ -106,24 +114,6 @@
             this.labelState2.TabIndex = 18;
             this.labelState2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // labelTime2
-            // 
-            this.labelTime2.AutoSize = true;
-            this.labelTime2.ForeColor = System.Drawing.Color.White;
-            this.labelTime2.Location = new System.Drawing.Point(29, 47);
-            this.labelTime2.Name = "labelTime2";
-            this.labelTime2.Size = new System.Drawing.Size(94, 27);
-            this.labelTime2.TabIndex = 7;
-            this.labelTime2.Text = "01:47:39";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(21, 10);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(110, 30);
-            this.pictureBox1.TabIndex = 15;
-            this.pictureBox1.TabStop = false;
-            // 
             // pictureBox2
             // 
             this.pictureBox2.Location = new System.Drawing.Point(21, 10);
@@ -132,10 +122,20 @@
             this.pictureBox2.TabIndex = 17;
             this.pictureBox2.TabStop = false;
             // 
+            // labelTime2
+            // 
+            this.labelTime2.ForeColor = System.Drawing.Color.White;
+            this.labelTime2.Location = new System.Drawing.Point(29, 47);
+            this.labelTime2.Name = "labelTime2";
+            this.labelTime2.Size = new System.Drawing.Size(94, 27);
+            this.labelTime2.TabIndex = 7;
+            this.labelTime2.Text = "01:47:39";
+            this.labelTime2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // moonTimer1
             // 
-            this.moonTimer1.SecondChanged += new System.EventHandler(this.moonTimer1_SecondChanged);
             this.moonTimer1.MoonAgeChanged += new Dx2Timer.MoonTimer.MoonAgeEventHandler(this.moonTimer1_MoonAgeChanged);
+            this.moonTimer1.SecondChanged += new System.EventHandler(this.moonTimer1_SecondChanged);
             // 
             // MoonPanel
             // 
@@ -148,13 +148,10 @@
             this.Name = "MoonPanel";
             this.Size = new System.Drawing.Size(150, 308);
             this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
