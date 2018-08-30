@@ -185,9 +185,9 @@ namespace Dx2Timer
 
             string fmt = "yyyyMMddHHmm";
             string before = moonTimer1.NextFullMoon.AddMinutes(
-                -1 * Properties.Settings.Default.BeforeFullMoon).ToString(fmt);
+                Properties.Settings.Default.BeforeFullMoon * -1).ToString(fmt);
             string snooze = moonTimer1.NextFullMoon.AddMinutes(
-                -1 * Properties.Settings.Default.SnoozeFullMoon).ToString(fmt);
+                Properties.Settings.Default.SnoozeFullMoon * -1).ToString(fmt);
 
             if (moonTimer1.Now.ToString(fmt) == before)
             {
