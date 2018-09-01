@@ -103,6 +103,7 @@
             this.textBoxVal.TabIndex = 17;
             this.textBoxVal.Text = "0";
             this.textBoxVal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBoxVal.Validated += new System.EventHandler(this.textBoxVal_Validated);
             // 
             // textBoxMax
             // 

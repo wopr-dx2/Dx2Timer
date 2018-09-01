@@ -34,6 +34,7 @@
             this.contextMenuStripNotify = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItemShow = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemNextFullMoon = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemUpToNextFullMoon = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonClose = new System.Windows.Forms.Button();
@@ -66,35 +67,41 @@
             this.contextMenuStripNotify.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripMenuItemShow,
             this.toolStripMenuItemNextFullMoon,
+            this.toolStripMenuItemUpToNextFullMoon,
             this.toolStripMenuItem1,
             this.toolStripMenuItemExit});
             this.contextMenuStripNotify.Name = "contextMenuStripNotify";
-            this.contextMenuStripNotify.Size = new System.Drawing.Size(177, 100);
+            this.contextMenuStripNotify.Size = new System.Drawing.Size(140, 98);
             // 
             // toolStripMenuItemShow
             // 
             this.toolStripMenuItemShow.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Bold);
             this.toolStripMenuItemShow.Name = "toolStripMenuItemShow";
-            this.toolStripMenuItemShow.Size = new System.Drawing.Size(176, 30);
+            this.toolStripMenuItemShow.Size = new System.Drawing.Size(139, 22);
             this.toolStripMenuItemShow.Text = "表示(&S)";
             this.toolStripMenuItemShow.Click += new System.EventHandler(this.toolStripMenuItemShow_Click);
             // 
             // toolStripMenuItemNextFullMoon
             // 
             this.toolStripMenuItemNextFullMoon.Name = "toolStripMenuItemNextFullMoon";
-            this.toolStripMenuItemNextFullMoon.Size = new System.Drawing.Size(176, 30);
+            this.toolStripMenuItemNextFullMoon.Size = new System.Drawing.Size(139, 22);
             this.toolStripMenuItemNextFullMoon.Text = "次の満月(&N)";
-            this.toolStripMenuItemNextFullMoon.Click += new System.EventHandler(this.toolStripMenuItemNextFullMoon_Click);
+            // 
+            // toolStripMenuItemUpToNextFullMoon
+            // 
+            this.toolStripMenuItemUpToNextFullMoon.Name = "toolStripMenuItemUpToNextFullMoon";
+            this.toolStripMenuItemUpToNextFullMoon.Size = new System.Drawing.Size(139, 22);
+            this.toolStripMenuItemUpToNextFullMoon.Text = "次の満月まで";
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(173, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(136, 6);
             // 
             // toolStripMenuItemExit
             // 
             this.toolStripMenuItemExit.Name = "toolStripMenuItemExit";
-            this.toolStripMenuItemExit.Size = new System.Drawing.Size(176, 30);
+            this.toolStripMenuItemExit.Size = new System.Drawing.Size(139, 22);
             this.toolStripMenuItemExit.Text = "終了(&X)";
             this.toolStripMenuItemExit.Click += new System.EventHandler(this.toolStripMenuItemExit_Click);
             // 
@@ -165,9 +172,9 @@
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(58)))), ((int)(((byte)(114)))));
-            this.pictureBox1.Location = new System.Drawing.Point(53, 95);
+            this.pictureBox1.Location = new System.Drawing.Point(3, 80);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 70);
+            this.pictureBox1.Size = new System.Drawing.Size(150, 120);
             this.pictureBox1.TabIndex = 15;
             this.pictureBox1.TabStop = false;
             // 
@@ -211,6 +218,7 @@
             this.moonPanel1.TimerEnabled = false;
             this.moonPanel1.ShowMessage += new Dx2Timer.MoonPanel.MessageEentHandler(this.moonPanel1_ShowMessage);
             this.moonPanel1.MoonAgeChanged += new Dx2Timer.MoonPanel.MoonAgeEventHandler(this.moonPanel1_MoonAgeChanged);
+            this.moonPanel1.SecondChanged += new System.EventHandler(this.moonPanel1_SecondChanged);
             // 
             // auraPanel1
             // 
@@ -269,6 +277,7 @@
         private System.Windows.Forms.CheckBox checkBoxTopMost;
         private AuraPanel auraPanel1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemNextFullMoon;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemUpToNextFullMoon;
     }
 }
 

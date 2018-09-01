@@ -17,6 +17,10 @@ namespace Dx2Timer
         {
             InitializeComponent();
 
+            // 保存されている行動力をセットする
+            textBoxVal.Text =
+                Properties.Settings.Default.AuraVal.ToString();
+
             // 保存されている行動力最大値をセットする
             textBoxMax.Text =
                 Properties.Settings.Default.AuraMax.ToString();
@@ -125,12 +129,18 @@ namespace Dx2Timer
             if (val < max)
             {
                 // 行動力の値を 1 回復
-                textBoxVal.Text = (val + 1).ToString();
+                // 保存するように変更 20180831
+                val++;
+
+                Properties.Settings.Default.AuraVal = val;  // 20180831
+                Properties.Settings.Default.Save();         // 20180831
+
+                textBoxVal.Text = val.ToString();
 
                 // メッセージを表示する設定なら表示イベントを発生させる
                 if (Properties.Settings.Default.AuraMessage)
                 {
-                    if (val + 1 == max - Properties.Settings.Default.BeforeAuraVal)
+                    if (val == max - Properties.Settings.Default.BeforeAuraVal)
                     {
                         OnShowMessage(string.Format(
                             "行動力回復まで {0} 分",
@@ -146,6 +156,15 @@ namespace Dx2Timer
             if (int.TryParse(textBoxMax.Text, out int max))
             {
                 Properties.Settings.Default.AuraMax = max;
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        private void textBoxVal_Validated(object sender, EventArgs e)
+        {
+            if (int.TryParse(textBoxVal.Text, out int val))
+            {
+                Properties.Settings.Default.AuraVal = val;
                 Properties.Settings.Default.Save();
             }
         }

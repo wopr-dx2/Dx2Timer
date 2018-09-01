@@ -94,5 +94,17 @@ namespace Dx2Timer.Properties {
                 this["SnoozeFullMoon"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public int AuraVal {
+            get {
+                return ((int)(this["AuraVal"]));
+            }
+            set {
+                this["AuraVal"] = value;
+            }
+        }
     }
 }

@@ -169,6 +169,8 @@ namespace Dx2Timer
                 labelTime1.Text = moonTimer1.UpToNextFullMoon.ToString(TIMESPAN_FORMAT);
                 labelTime2.Text = moonTimer1.UpToNextNewMoon.ToString(TIMESPAN_FORMAT);
             }
+
+            OnSecondChanged();
         }
 
         // 1 分毎イベント
@@ -219,6 +221,13 @@ namespace Dx2Timer
         {
             MoonAge = e.MoonAge;
             OnMoonAgeChanged();
+
+            // 満月終了時にメッセージ
+            // コムギコ氏より要望　20180902
+            if (MoonAge == MoonAges.F7N)
+            {
+                OnShowMessage("満月が終了しました");
+            }
         }
 
         // 月齢が変化したら発生するイベント
@@ -231,6 +240,17 @@ namespace Dx2Timer
         private void OnMoonAgeChanged()
         {
             this.OnMoonAgeChanged(this, new MoonAgeEventArgs(MoonAge));
+        }
+
+        // 秒が変化したら発生するイベント
+        public event EventHandler SecondChanged;
+        protected virtual void OnSecondChanged(object sender, EventArgs e)
+        {
+            this.SecondChanged?.Invoke(sender, e);
+        }
+        private void OnSecondChanged()
+        {
+            this.OnSecondChanged(this, new EventArgs());
         }
     }
 }

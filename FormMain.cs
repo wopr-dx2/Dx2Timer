@@ -15,7 +15,9 @@ namespace Dx2Timer
     {
         // panel
         int PANEL_EXPAND = 113;     // 開く
-        int PANEL_COLLAPSE = -108;  // 閉じる
+        int PANEL_COLLAPSE = -150;  // 閉じる
+        int COVER_NORMAL = 80;      // 通常位置
+        int COVER_HIDE = 0;         // 引っ込む位置
 
         // Form 移動用
         Point mousePoint;
@@ -124,20 +126,26 @@ namespace Dx2Timer
             {
                 case PanelStates.Close:
                     moonPanel1.Top = PANEL_EXPAND;
+                    auraPanel1.Top = PANEL_COLLAPSE;
+                    pictureBox1.Top = COVER_HIDE;
                     panelState = PanelStates.Moon;
                     break;
                 case PanelStates.Moon:
                     moonPanel1.Top = PANEL_COLLAPSE;
                     auraPanel1.Top = PANEL_EXPAND;
+                    pictureBox1.Top = COVER_HIDE;
                     panelState = PanelStates.Aura;
                     break;
                 case PanelStates.Aura:
+                    moonPanel1.Top = PANEL_COLLAPSE;
                     auraPanel1.Top = PANEL_COLLAPSE;
+                    pictureBox1.Top = COVER_NORMAL;
                     panelState = PanelStates.Close;
                     break;
                 default:
                     moonPanel1.Top = PANEL_COLLAPSE;
                     auraPanel1.Top = PANEL_COLLAPSE;
+                    pictureBox1.Top = COVER_NORMAL;
                     panelState = PanelStates.Close;
                     break;
             }
@@ -175,14 +183,7 @@ namespace Dx2Timer
         // 次の満月(&N)
         private void toolStripMenuItemNextFullMoon_Click(object sender, EventArgs e)
         {
-            notifyIcon1.BalloonTipText =
-                moonPanel1.MoonAge == MoonAges.Full ?
-                    string.Format("次の満月は {0}", moonPanel1.NextFullMoon.ToString("MM/dd HH:mm"))
-                :
-                    string.Format("次の満月は {0}", moonPanel1.NextFullMoon.ToString("MM/dd HH:mm")) +
-                    Environment.NewLine +
-                    string.Format("次の満月まで {0}", moonPanel1.UpToFullMoon.ToString(@"hh\:mm"));
-            notifyIcon1.ShowBalloonTip(3000);
+            // メッセージではなく、直接メニューに表示した    20180831
         }
 
         // 終了(&X)
@@ -196,17 +197,25 @@ namespace Dx2Timer
 
         private void checkBox1_MouseEnter(object sender, EventArgs e)
         {
-            if (panelState == PanelStates.Close & moonPanel1.Top < 0)
+            //if (panelState == PanelStates.Close & moonPanel1.Top < 0)
+            //{
+            //    moonPanel1.Top = PANEL_COLLAPSE + 10;
+            //}
+            if (panelState == PanelStates.Close)
             {
-                moonPanel1.Top = PANEL_COLLAPSE + 10;
+                pictureBox1.Top = COVER_NORMAL + 10;
             }
         }
 
         private void checkBox1_MouseLeave(object sender, EventArgs e)
         {
-            if (moonPanel1.Top < 0)
+            //if (moonPanel1.Top < 0)
+            //{
+            //    moonPanel1.Top = PANEL_COLLAPSE;
+            //}
+            if (panelState == PanelStates.Close)
             {
-                moonPanel1.Top = PANEL_COLLAPSE;
+                pictureBox1.Top = COVER_NORMAL;
             }
         }
 
@@ -286,6 +295,10 @@ namespace Dx2Timer
                     notifyIcon1.Icon = Properties.Resources.iNewMoon;
                     break;
             }
+
+            // notify
+            toolStripMenuItemNextFullMoon.Text =
+                string.Format("{0} から満月です", moonPanel1.NextFullMoon.ToString("MM/dd HH:mm"));
         }
 
         private void moonPanel1_ShowMessage(object sender, MessageEventArgs e)
@@ -300,6 +313,13 @@ namespace Dx2Timer
             // 行動力回復まで {0} 分
             notifyIcon1.BalloonTipText = e.Message;
             notifyIcon1.ShowBalloonTip(3000);
+        }
+
+        private void moonPanel1_SecondChanged(object sender, EventArgs e)
+        {
+            toolStripMenuItemUpToNextFullMoon.Text =
+                string.Format("満月まで {0}",
+                moonPanel1.UpToFullMoon.ToString(@"hh\:mm\:ss"));
         }
     }
 }
