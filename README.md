@@ -7,9 +7,6 @@ You can know moon age. Go Aura Gate when full moon.
 Visual Studio Community 2017
 C# .NET Framework 4.7.1
 
-# Setup
-Use Visual Studio
-
 # Usage
 Click 'i' button -> show information
 
