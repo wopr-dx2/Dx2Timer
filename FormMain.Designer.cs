@@ -43,9 +43,11 @@
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.checkBoxTopMost = new System.Windows.Forms.CheckBox();
+            this.checkTagNozuchi = new Dx2Timer.CheckTag();
             this.moonBox1 = new Dx2Timer.MoonBox();
             this.moonPanel1 = new Dx2Timer.MoonPanel();
-            this.auraPanel1 = new Dx2Timer.AuraPanel();
+            this.agesPanel1 = new Dx2Timer.AgesPanel();
+            this.nozuchiPanel1 = new Dx2Timer.NozuchiPanel();
             this.contextMenuStripNotify.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.moonBox1)).BeginInit();
@@ -71,37 +73,37 @@
             this.toolStripMenuItem1,
             this.toolStripMenuItemExit});
             this.contextMenuStripNotify.Name = "contextMenuStripNotify";
-            this.contextMenuStripNotify.Size = new System.Drawing.Size(140, 98);
+            this.contextMenuStripNotify.Size = new System.Drawing.Size(182, 130);
             // 
             // toolStripMenuItemShow
             // 
             this.toolStripMenuItemShow.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Bold);
             this.toolStripMenuItemShow.Name = "toolStripMenuItemShow";
-            this.toolStripMenuItemShow.Size = new System.Drawing.Size(139, 22);
+            this.toolStripMenuItemShow.Size = new System.Drawing.Size(181, 30);
             this.toolStripMenuItemShow.Text = "表示(&S)";
             this.toolStripMenuItemShow.Click += new System.EventHandler(this.toolStripMenuItemShow_Click);
             // 
             // toolStripMenuItemNextFullMoon
             // 
             this.toolStripMenuItemNextFullMoon.Name = "toolStripMenuItemNextFullMoon";
-            this.toolStripMenuItemNextFullMoon.Size = new System.Drawing.Size(139, 22);
+            this.toolStripMenuItemNextFullMoon.Size = new System.Drawing.Size(181, 30);
             this.toolStripMenuItemNextFullMoon.Text = "次の満月(&N)";
             // 
             // toolStripMenuItemUpToNextFullMoon
             // 
             this.toolStripMenuItemUpToNextFullMoon.Name = "toolStripMenuItemUpToNextFullMoon";
-            this.toolStripMenuItemUpToNextFullMoon.Size = new System.Drawing.Size(139, 22);
+            this.toolStripMenuItemUpToNextFullMoon.Size = new System.Drawing.Size(181, 30);
             this.toolStripMenuItemUpToNextFullMoon.Text = "次の満月まで";
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(136, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(178, 6);
             // 
             // toolStripMenuItemExit
             // 
             this.toolStripMenuItemExit.Name = "toolStripMenuItemExit";
-            this.toolStripMenuItemExit.Size = new System.Drawing.Size(139, 22);
+            this.toolStripMenuItemExit.Size = new System.Drawing.Size(181, 30);
             this.toolStripMenuItemExit.Text = "終了(&X)";
             this.toolStripMenuItemExit.Click += new System.EventHandler(this.toolStripMenuItemExit_Click);
             // 
@@ -196,6 +198,19 @@
             this.checkBoxTopMost.UseVisualStyleBackColor = false;
             this.checkBoxTopMost.CheckedChanged += new System.EventHandler(this.checkBoxTopMostTopMost_CheckedChanged);
             // 
+            // checkTagNozuchi
+            // 
+            this.checkTagNozuchi.Appearance = System.Windows.Forms.Appearance.Button;
+            this.checkTagNozuchi.FlatAppearance.BorderSize = 0;
+            this.checkTagNozuchi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkTagNozuchi.Image = ((System.Drawing.Image)(resources.GetObject("checkTagNozuchi.Image")));
+            this.checkTagNozuchi.Location = new System.Drawing.Point(131, 72);
+            this.checkTagNozuchi.Name = "checkTagNozuchi";
+            this.checkTagNozuchi.Size = new System.Drawing.Size(21, 54);
+            this.checkTagNozuchi.TabIndex = 20;
+            this.checkTagNozuchi.UseVisualStyleBackColor = true;
+            this.checkTagNozuchi.CheckedChanged += new System.EventHandler(this.checkTagNozuchi_CheckedChanged);
+            // 
             // moonBox1
             // 
             this.moonBox1.Image = ((System.Drawing.Image)(resources.GetObject("moonBox1.Image")));
@@ -220,22 +235,32 @@
             this.moonPanel1.MoonAgeChanged += new Dx2Timer.MoonPanel.MoonAgeEventHandler(this.moonPanel1_MoonAgeChanged);
             this.moonPanel1.SecondChanged += new System.EventHandler(this.moonPanel1_SecondChanged);
             // 
-            // auraPanel1
+            // agesPanel1
             // 
-            this.auraPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(58)))), ((int)(((byte)(114)))));
-            this.auraPanel1.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.auraPanel1.Location = new System.Drawing.Point(3, -108);
-            this.auraPanel1.Name = "auraPanel1";
-            this.auraPanel1.Size = new System.Drawing.Size(150, 308);
-            this.auraPanel1.TabIndex = 17;
-            this.auraPanel1.TimerEnabled = false;
-            this.auraPanel1.ShowMessage += new Dx2Timer.AuraPanel.MessageEentHandler(this.auraPanel1_ShowMessage);
+            this.agesPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(58)))), ((int)(((byte)(114)))));
+            this.agesPanel1.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.agesPanel1.IsInitialized = false;
+            this.agesPanel1.Location = new System.Drawing.Point(3, -108);
+            this.agesPanel1.Name = "agesPanel1";
+            this.agesPanel1.NextFullMoon = new System.DateTime(((long)(0)));
+            this.agesPanel1.Size = new System.Drawing.Size(150, 308);
+            this.agesPanel1.TabIndex = 19;
+            // 
+            // nozuchiPanel1
+            // 
+            this.nozuchiPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(58)))), ((int)(((byte)(114)))));
+            this.nozuchiPanel1.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.nozuchiPanel1.Location = new System.Drawing.Point(3, -108);
+            this.nozuchiPanel1.Name = "nozuchiPanel1";
+            this.nozuchiPanel1.Size = new System.Drawing.Size(150, 308);
+            this.nozuchiPanel1.TabIndex = 18;
             // 
             // FormMain
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(176, 730);
+            this.Controls.Add(this.checkTagNozuchi);
             this.Controls.Add(this.checkBoxTopMost);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonInfo);
@@ -244,7 +269,8 @@
             this.Controls.Add(this.moonBox1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.moonPanel1);
-            this.Controls.Add(this.auraPanel1);
+            this.Controls.Add(this.agesPanel1);
+            this.Controls.Add(this.nozuchiPanel1);
             this.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormMain";
@@ -275,9 +301,11 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemExit;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.CheckBox checkBoxTopMost;
-        private AuraPanel auraPanel1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemNextFullMoon;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemUpToNextFullMoon;
+        private NozuchiPanel nozuchiPanel1;
+        private AgesPanel agesPanel1;
+        private CheckTag checkTagNozuchi;
     }
 }
 

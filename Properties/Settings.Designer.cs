@@ -49,42 +49,6 @@ namespace Dx2Timer.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("100")]
-        public int AuraMax {
-            get {
-                return ((int)(this["AuraMax"]));
-            }
-            set {
-                this["AuraMax"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("5")]
-        public int BeforeAuraVal {
-            get {
-                return ((int)(this["BeforeAuraVal"]));
-            }
-            set {
-                this["BeforeAuraVal"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool AuraMessage {
-            get {
-                return ((bool)(this["AuraMessage"]));
-            }
-            set {
-                this["AuraMessage"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("1")]
         public int SnoozeFullMoon {
             get {
@@ -92,18 +56,6 @@ namespace Dx2Timer.Properties {
             }
             set {
                 this["SnoozeFullMoon"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("100")]
-        public int AuraVal {
-            get {
-                return ((int)(this["AuraVal"]));
-            }
-            set {
-                this["AuraVal"] = value;
             }
         }
     }

@@ -8,20 +8,8 @@
     <Setting Name="BeforeFullMoon" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">5</Value>
     </Setting>
-    <Setting Name="AuraMax" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">100</Value>
-    </Setting>
-    <Setting Name="BeforeAuraVal" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">5</Value>
-    </Setting>
-    <Setting Name="AuraMessage" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
     <Setting Name="SnoozeFullMoon" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1</Value>
-    </Setting>
-    <Setting Name="AuraVal" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">100</Value>
     </Setting>
   </Settings>
 </SettingsFile>

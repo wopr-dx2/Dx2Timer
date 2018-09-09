@@ -72,7 +72,8 @@ namespace Dx2Timer
         private void Form1_Load(object sender, EventArgs e)
         {
             moonPanel1.TimerEnabled = true;
-            auraPanel1.TimerEnabled = Properties.Settings.Default.AuraMessage;
+            // アウラパネルは、あまり使わないので実装削除    20180908    v0.9.3
+            //auraPanel1.TimerEnabled = Properties.Settings.Default.AuraMessage;
         }
 
         // 右上 最小化ボタン
@@ -117,34 +118,41 @@ namespace Dx2Timer
         #region 情報ボタン(i)を押した時にパネルを表示
 
         // 閉じる・月齢パネル・アウラゲートパネル の tri-state
-        enum PanelStates { Close, Moon, Aura };
+        enum PanelStates { Close, Moon, Ages, Nozuchi };
         PanelStates panelState = PanelStates.Close;
 
         private void buttonInfo_Click(object sender, EventArgs e)
         {
             switch (panelState)
             {
-                case PanelStates.Close:
+                case PanelStates.Close: // to Moon
                     moonPanel1.Top = PANEL_EXPAND;
-                    auraPanel1.Top = PANEL_COLLAPSE;
+                    agesPanel1.Top = PANEL_COLLAPSE;
+                    nozuchiPanel1.Top = PANEL_COLLAPSE;
                     pictureBox1.Top = COVER_HIDE;
                     panelState = PanelStates.Moon;
                     break;
-                case PanelStates.Moon:
+                case PanelStates.Moon:  // to Ages
                     moonPanel1.Top = PANEL_COLLAPSE;
-                    auraPanel1.Top = PANEL_EXPAND;
+                    agesPanel1.Top = PANEL_EXPAND;
+                    nozuchiPanel1.Top = PANEL_COLLAPSE;
                     pictureBox1.Top = COVER_HIDE;
-                    panelState = PanelStates.Aura;
+                    panelState = PanelStates.Ages;
                     break;
-                case PanelStates.Aura:
+                case PanelStates.Ages:  // to Close
                     moonPanel1.Top = PANEL_COLLAPSE;
-                    auraPanel1.Top = PANEL_COLLAPSE;
+                    agesPanel1.Top = PANEL_COLLAPSE;
+                    nozuchiPanel1.Top = PANEL_COLLAPSE;
                     pictureBox1.Top = COVER_NORMAL;
                     panelState = PanelStates.Close;
                     break;
+                case PanelStates.Nozuchi:
+                    checkTagNozuchi.Checked = false;
+                    break;
                 default:
                     moonPanel1.Top = PANEL_COLLAPSE;
-                    auraPanel1.Top = PANEL_COLLAPSE;
+                    agesPanel1.Top = PANEL_COLLAPSE;
+                    nozuchiPanel1.Top = PANEL_COLLAPSE;
                     pictureBox1.Top = COVER_NORMAL;
                     panelState = PanelStates.Close;
                     break;
@@ -248,6 +256,7 @@ namespace Dx2Timer
                     break;
                 case MoonAges.F7N:
                     notifyIcon1.Icon = Properties.Resources.iF7N;
+                    agesPanel1.NextFullMoon = moonPanel1.NextFullMoon;  // 20180907
                     break;
                 case MoonAges.F6N:
                     notifyIcon1.Icon = Properties.Resources.iF6N;
@@ -320,6 +329,21 @@ namespace Dx2Timer
             toolStripMenuItemUpToNextFullMoon.Text =
                 string.Format("満月まで {0}",
                 moonPanel1.UpToFullMoon.ToString(@"hh\:mm\:ss"));
+
+            if (!agesPanel1.IsInitialized)
+            {
+                agesPanel1.NextFullMoon = moonPanel1.NextFullMoon;
+                agesPanel1.IsInitialized = true;
+            }
+        }
+
+        private void checkTagNozuchi_CheckedChanged(object sender, EventArgs e)
+        {
+            moonPanel1.Top = PANEL_COLLAPSE;
+            agesPanel1.Top = PANEL_COLLAPSE;
+            nozuchiPanel1.Top = checkTagNozuchi.Checked ? PANEL_EXPAND : PANEL_COLLAPSE;
+            pictureBox1.Top = checkTagNozuchi.Checked ? COVER_HIDE : COVER_NORMAL;
+            panelState = checkTagNozuchi.Checked ? PanelStates.Nozuchi : PanelStates.Close;
         }
     }
 }
