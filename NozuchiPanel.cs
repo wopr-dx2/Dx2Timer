@@ -34,9 +34,9 @@ namespace Dx2Timer
             };
             GraphicsPath path =
                 new GraphicsPath(points, types);
-            pictureBox3.Region = new Region(path);
+            pictureBoxResist.Region = new Region(path);
 
-            // ボタンの形を変更
+            // ボタンの形を変更　シバブー
             // http://dobon.net/vb/dotnet/form/formregion.html
             Point[] points2 =
             {
@@ -68,6 +68,13 @@ namespace Dx2Timer
 
             try
             {
+                if (labelTitle.Text != "ノズチ")
+                {
+                    labelTitle.Text = "ノズチ";
+                    pictureBoxResist.BackgroundImage =
+                        Properties.Resources.resist_nozuchi;
+                }
+
                 if (pictureBoxNormal.Visible)
                 {
                     pictureBoxNormal.Visible = false;
@@ -75,14 +82,42 @@ namespace Dx2Timer
                     // https://dobon.net/vb/dotnet/programing/random.html
 
                     Random r = new Random(DateTime.Now.Millisecond);
-                    int i = r.Next(1000);
-                    if (i < 5)
+                    int i = r.Next(3000);
+#if DEBUG
+                    int j = 100;
+#else
+                    int j = 1;
+#endif
+
+                    if (i < 15 * j)
                     {
                         pictureBoxRare.Visible = true;
                         // http://posnum.hatenablog.com/entry/2014/10/28/222436
                         await Task.Delay(1500);
+
+                        if (i < 5 * j)
+                        {
+                            labelTitle.Text = "スルト";
+                            pictureBoxResist.BackgroundImage =
+                                Properties.Resources.resist_surt;
+                            pictureBoxResult.BackgroundImage =
+                                Properties.Resources.nozuchi_surt;
+                        }
+                        else if (i < 10 * j)
+                        {
+                            labelTitle.Text = "ノズチ？";
+                            pictureBoxResult.BackgroundImage =
+                                Properties.Resources.nozuchi_mara;
+                        }
+                        else
+                        {
+                            labelTitle.Text = "ノズチ？";
+                            pictureBoxResult.BackgroundImage =
+                                Properties.Resources.nozuchi_komugiko;
+                        }
+
                         pictureBoxRare.Visible = false;
-                        pictureBoxKomugiko.Visible = true;
+                        pictureBoxResult.Visible = true;
                     }
                     else
                     {
@@ -92,7 +127,7 @@ namespace Dx2Timer
                 else
                 {
                     pictureBoxBinded.Visible = false;
-                    pictureBoxKomugiko.Visible = false;
+                    pictureBoxResult.Visible = false;
                     pictureBoxNormal.Visible = true;
                 }
             }

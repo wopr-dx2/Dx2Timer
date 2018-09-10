@@ -149,9 +149,6 @@
     <None Include="Resources\Full.gif" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\NewMoon.gif" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\iF1N.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -312,6 +309,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="iFullMoon.ico" />
+    <None Include="img\nozuchi\resist.nozuchi.png" />
+    <None Include="img\nozuchi\resist.surt.png" />
+    <None Include="img\nozuchi\shibaboo.png" />
+    <None Include="img\nozuchi\nozuchi.normal.png" />
+    <None Include="img\nozuchi\nozuchi.binded.png" />
+    <None Include="img\nozuchi\nozuchi.komugiko.png" />
+    <None Include="img\nozuchi\nozuchi.mara.png" />
+    <None Include="img\nozuchi\nozuchi.rare.png" />
+    <None Include="img\nozuchi\nozuchi.surt.png" />
     <None Include="img\nozuchi\tag.enabled.png" />
     <None Include="img\nozuchi\tag.disabled.png" />
   </ItemGroup>
