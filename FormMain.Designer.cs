@@ -37,12 +37,12 @@
             this.toolStripMenuItemUpToNextFullMoon = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.buttonClose = new System.Windows.Forms.Button();
-            this.buttonHide = new System.Windows.Forms.Button();
-            this.buttonInfo = new System.Windows.Forms.Button();
+            this.buttonClose = new AntiFocusedButton();
+            this.buttonHide = new AntiFocusedButton();
+            this.buttonInfo = new AntiFocusedButton();
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.checkBoxTopMost = new System.Windows.Forms.CheckBox();
+            this.checkBoxTopMost = new AntiFocusedCheckBox();
             this.checkTagNozuchi = new Dx2Timer.CheckTag();
             this.moonBox1 = new Dx2Timer.MoonBox();
             this.moonPanel1 = new Dx2Timer.MoonPanel();
@@ -150,6 +150,7 @@
             this.buttonInfo.Name = "buttonInfo";
             this.buttonInfo.Size = new System.Drawing.Size(52, 60);
             this.buttonInfo.TabIndex = 10;
+            this.buttonInfo.TabStop = false;
             this.buttonInfo.UseVisualStyleBackColor = false;
             this.buttonInfo.Click += new System.EventHandler(this.buttonInfo_Click);
             this.buttonInfo.MouseEnter += new System.EventHandler(this.checkBox1_MouseEnter);
@@ -208,6 +209,7 @@
             this.checkTagNozuchi.Name = "checkTagNozuchi";
             this.checkTagNozuchi.Size = new System.Drawing.Size(21, 54);
             this.checkTagNozuchi.TabIndex = 20;
+            this.checkTagNozuchi.TabStop = false;
             this.checkTagNozuchi.UseVisualStyleBackColor = true;
             this.checkTagNozuchi.CheckedChanged += new System.EventHandler(this.checkTagNozuchi_CheckedChanged);
             // 
@@ -289,9 +291,9 @@
         #endregion
 
         private System.Windows.Forms.NotifyIcon notifyIcon1;
-        private System.Windows.Forms.Button buttonClose;
-        private System.Windows.Forms.Button buttonHide;
-        private System.Windows.Forms.Button buttonInfo;
+        private AntiFocusedButton buttonClose;
+        private AntiFocusedButton buttonHide;
+        private AntiFocusedButton buttonInfo;
         private MoonBox moonBox1;
         private MoonPanel moonPanel1;
         private System.Windows.Forms.Button button1;
@@ -300,7 +302,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemExit;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.CheckBox checkBoxTopMost;
+        private AntiFocusedCheckBox checkBoxTopMost;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemNextFullMoon;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemUpToNextFullMoon;
         private NozuchiPanel nozuchiPanel1;

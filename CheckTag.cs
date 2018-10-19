@@ -21,6 +21,8 @@ namespace Dx2Timer
             Text = "";
 
             Draw();
+
+            SetStyle(ControlStyles.Selectable, false);
         }
 
         void Draw()

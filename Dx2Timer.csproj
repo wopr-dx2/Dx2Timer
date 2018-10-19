@@ -66,6 +66,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AntiFocusedButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AntiFocusedCheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="CheckTag.cs">
       <SubType>Component</SubType>
     </Compile>
